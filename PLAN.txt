@@ -1,0 +1,97 @@
+=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
+CIS 120 Homework 7 README
+PennKey: etc
+=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
+
+============
+=: Task 2 :=
+============
+
+- Do you plan on creating any new classes in your design? If so, what classes
+  are you making, what do they store, and what behaviors do they have?
+  
+  I plan on creating a Channel class and a User class. The Channel class is 
+  responsible for keeping track of the users within the channel, and the owner
+  of the channel. It has a name and knows the names of all the users within 
+  its channel, as well as associated messages. It has functions that allow users 
+  to be added to the channel and be removed. It also knows if it is invite only 
+  and who the owner of the channel is. The User class keeps track of the messages 
+  of each user.
+
+- How do you plan on storing what users are registered on the server?
+
+  I plan on creaing a Map with mappings from a key of UserId to a value of each
+  corresponding nickname.
+
+- How do you plan on keeping track of which user has which user ID, considering
+  the fact that the user's nickname can change over the course of the program?
+  
+  I plan on reassociating the key value pairing of each UserId to each nickname
+  if the nickname changes.
+
+- How do you plan on storing what users are in a channel?
+   
+  I plan on creating a set within the Channel class that will store all users
+  to quickly check if a user is within a channel.
+
+- How do you plan on keeping track of which user is the owner of each channel?
+  
+  I plan on creating a variable "owner" within the Channel class that will be tied
+  to the nickname of user that is the owner of the channel.
+
+- Justify your choice of collections (TreeSet, TreeMap, or LinkedList) for the
+  collections you use in your design.
+  
+  ServerModel.users: A TreeMap is optimal here as it allows quick association 
+  and reassociation of userIds and Nicknames. TreeSet and TreeMap do not support
+  the functionality to allow rapid reassigning of userIds and nicknames.
+  
+  ServerModel.channels: A TreeMap is optimal here as it allows for quick association
+  between the names of the Channels and the Channel class itself.
+  
+  Channel.users: A TreeSet is optimal here as it allows the most rapid checking of
+  the users within a channel. The functionality of a TreeMap to rapidly pick out each
+  user within a channel and map them to something is unwarranted and LinkedList is 
+  inefficient for checking users within a channel.
+  
+  User.messages: A LinkedList is optimal here because it doesn't have a size restriction
+  and preserves the order the messages were sent in a simple manner.
+
+
+============
+=: Task 3 :=
+============
+
+- Did you make any changes to your design while doing this task? Why?
+  
+  I realized it was unneccsary to have Channel.users be a TreeMap as it would double
+  store userId mapping to nickname, which could cause problems, and the added functionality
+  was not needed.
+
+
+============
+=: Task 4 :=
+============
+
+- Did you make any changes to your design while doing this task? Why?
+
+
+============
+=: Task 5 :=
+============
+
+- How do you plan on keeping track of which channels are invite-only?
+
+- Will you make any changes to your work from before in order to make
+  implementing invite-only channels easier?
+
+
+============
+=: Task 6 :=
+============
+
+- Did you have to make any changes to your design in Task 6? Why?
+
+- If you were to redo this assignment, what changes (if any) would you make in
+  how you designed your code?
+
